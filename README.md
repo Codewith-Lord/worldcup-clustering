@@ -1,4 +1,4 @@
-# World Cup 2026: Player Clustering Dashboard
+# FootballMania · World Cup 2026 Player Clustering
 
 Groups outfield players by playing style using K-Means, shown in a Streamlit dashboard.
 
@@ -9,10 +9,11 @@ streamlit run app.py
 ```
 
 ## Files
-- `app.py` - dashboard (sidebar K slider, PCA player map, profiles, silhouette chart, player table)
+- `app.py` - dark stadium-themed dashboard: left sidebar (nav, K, team/position/cluster filters, dataset stats), centre (hero, KPIs, PCA cluster map with centroids), right (cluster cards, quick compare, clickable player details), below (radar / z-score heatmap / position mix, silhouette analysis, searchable player table)
+- `assets/stadium_hero.jpg` - generated stadium header image
 - `clustering.py` - data loading, feature building, K-Means, PCA, silhouette scores
 - `data/` - the player performance CSV
-- `.streamlit/config.toml` - green football theme
+- `.streamlit/config.toml` - dark theme base (custom CSS in app.py does the rest)
 
 ## Method
 1. Drop goalkeepers, average each player's stats over all matches.

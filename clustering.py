@@ -65,3 +65,16 @@ def run_kmeans(feats: pd.DataFrame, X, k: int) -> pd.DataFrame:
 
 def cluster_profiles(clustered: pd.DataFrame) -> pd.DataFrame:
     return clustered.groupby("cluster")[FEATURES].mean().round(2)
+
+
+def pca_variance(X) -> list:
+    """Explained-variance ratio of the 2 PCA components used for the map."""
+    return list(PCA(2, random_state=0).fit(X).explained_variance_ratio_)
+
+
+def cluster_centroids(clustered: pd.DataFrame) -> pd.DataFrame:
+    """Centroid of each cluster in PCA space plus its size."""
+    g = clustered.groupby("cluster")
+    out = g[["PC1", "PC2"]].mean()
+    out["players"] = g.size()
+    return out
